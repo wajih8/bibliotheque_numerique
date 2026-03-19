@@ -1,30 +1,81 @@
 /* Hide scrollbars for the whole page */
 body {
-    overflow: hidden; /* prevents scrollbars */
-  }
+  overflow: hidden; /* prevents scrollbars */
+}
+
+/* Optional: prevent child overflow from showing */
+.right {
+  box-sizing: border-box; /* ensures padding/borders don't break size */
+}
+.right {
+  width: 30%;
+  height: 100%;
+  padding: 40px;
+  background: rgba(30, 20, 2, 0.7);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 12px 0 0 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  font-family: "Times New Roman", serif; /* set font */
+  font-weight: bold; /* make all text bold */
   
-  /* Optional: prevent child overflow from showing */
+  /* New for smooth pop-out */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Pop-out effect on hover */
+.right:hover {
+  transform: scale(1.03); /* slightly bigger */
+  box-shadow: 0 20px 60px rgba(0,0,0,0.9); /* bigger, darker shadow */
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #1a73e8;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 10px;
+
+  /* smooth animation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Hover effect */
+button:hover {
+  background: rgb(59, 39, 2) !important;
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+
+  body {
+    justify-content: center; /* center form */
+    align-items: center;
+  }
+
   .right {
-    box-sizing: border-box; /* ensures padding/borders don't break size */
+    width: 90%; /* take most of screen */
+    height: auto; /* no full height */
+    padding: 20px;
+    border-radius: 12px; /* normal corners */
   }
-  .right {
-    width: 30%;
-    height: 100%;
-    padding: 40px;
-    background: rgba(30, 20, 2, 0.7);
-    backdrop-filter: blur(10px);
-    color: white;
-    border-radius: 12px 0 0 12px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    font-family: "Times New Roman", serif; /* set font */
-    font-weight: bold; /* make all text bold */
-    
-    /* New for smooth pop-out */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  h2 {
+    font-size: 20px;
   }
-  
-  /* Pop-out effect on hover */
-  #button:hover {
-    transform: scale(1.03); /* slightly bigger */
-    box-shadow: 0 20px 60px rgba(0,0,0,0.9); /* bigger, darker shadow */
+
+  p {
+    font-size: 14px;
   }
+
+  input, button {
+    font-size: 16px; /* better for touch */
+  }
+}
