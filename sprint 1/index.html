@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Split Page with Blurred Form</title>
+<style>
+body, html {
+  margin: 0;
+  height: 100%;
+  font-family: Times New Roman, serif;
+}
+
+/* Full-page background image */
+body {
+  background: url("lib.jpeg") no-repeat center center/cover;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end; /* form on the right */
+  align-items: center;
+}
+
+/* Right form container */
+.right {
+  width: 30%; /* adjust width */
+  height: 100%;
+  padding: 40px;
+  background: rgba(30, 20, 2, 0.7); /* semi-transparent */
+  backdrop-filter: blur(10px); /* blur effect */
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Form styling */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background: rgba(28, 28, 28, 0.8);
+  border: none;
+  color: white;
+  border-radius: 6px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #9e6804;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #db9616;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<!-- RIGHT FORM -->
+<div class="right">
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+  <h2>Sign Up</h2>
+  <p>Votre voyage dans le monde des livres commence ici !</p>
+
+  <input type="email" placeholder="E-mail">
+  <input type="password" placeholder="Password">
+
+<table>
+  <tr>
+    <td><input type="checkbox"></td>
+    <td>Se souvenir de moi</td>
+  </tr>
+</table>
+
+  <button id="button">Créer un compte</button>
+</div>
+
+</body>
+</html>
