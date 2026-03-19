@@ -1,0 +1,30 @@
+/* Hide scrollbars for the whole page */
+body {
+    overflow: hidden; /* prevents scrollbars */
+  }
+  
+  /* Optional: prevent child overflow from showing */
+  .right {
+    box-sizing: border-box; /* ensures padding/borders don't break size */
+  }
+  .right {
+    width: 30%;
+    height: 100%;
+    padding: 40px;
+    background: rgba(30, 20, 2, 0.7);
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 12px 0 0 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    font-family: "Times New Roman", serif; /* set font */
+    font-weight: bold; /* make all text bold */
+    
+    /* New for smooth pop-out */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Pop-out effect on hover */
+  #button:hover {
+    transform: scale(1.03); /* slightly bigger */
+    box-shadow: 0 20px 60px rgba(0,0,0,0.9); /* bigger, darker shadow */
+  }
