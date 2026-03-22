@@ -38,7 +38,6 @@
   h2 { margin-bottom: 10px; }
   p { margin-bottom: 30px; font-style: italic; opacity: 0.9; }
 
-<<<<<<< HEAD
   /* Form styling */
   input[type="email"], 
   input[type="password"] {
@@ -60,22 +59,6 @@
     font-size: 14px;
     margin: 10px 0 20px 0;
   }
-=======
-button {
-  width: 100%;
-  padding: 12px;
-  background: #1a73e8;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 6px;
-  margin-top: 10px;
-}
-
-button:hover {
-  background: #155ec4;
-}
->>>>>>> 7f37a1dceb43987b6aa4aa803967abc76360a67e
 
   .checkbox-group {
     display: flex;
@@ -128,23 +111,23 @@ button:hover {
 </style>
 </head>
 <body>
-
+<form action="login.php" method="post"></form>
 <div class="right">
   <h2>Connecter</h2>
   <p>Votre voyage dans le monde des livres commence ici !</p>
 
-  <input type="email" placeholder="E-mail">
-  <input type="password" placeholder="Mot de passe">
+  <input type="email" placeholder="E-mail"name="email">
+  <input type="password" placeholder="Mot de passe"name="password">
 
   <div class="form-options">
     <div class="checkbox-group">
-      <input type="checkbox" id="remember">
+      <input type="checkbox" id="remember"name="remember">
       <label for="remember">Se souvenir de moi</label>
     </div>
     <a href="#" class="forgot-link">Mot de passe oublié ?</a>
   </div>
 
-  <button>Se connecter</button>
+  <button name="subm">Se connecter</button>
 
   <div class="signup-text">
     Pas encore de compte ? <a href="#">Inscrivez-vous</a>
