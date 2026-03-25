@@ -111,7 +111,7 @@
 </style>
 </head>
 <body>
-<form action="login.php" method="post"></form>
+<form action="login.php" method="post" id="loginForm"></form>
 <div class="right">
   <h2>Connecter</h2>
   <p>Votre voyage dans le monde des livres commence ici !</p>
@@ -126,13 +126,21 @@
     </div>
     <a href="#" class="forgot-link">Mot de passe oublié ?</a>
   </div>
+  <input name="subm"hidden>
 
-  <button name="subm">Se connecter</button>
+  <button type="button" onclick="verifyAndSubmit()">Se connecter</button>
 
   <div class="signup-text">
     Pas encore de compte ? <a href="#">Inscrivez-vous</a>
   </div>
 </div>
+<script>
+  function verifyAndSubmit() {
+  const form = document.getElementById('loginForm');
 
+    form.submit(); 
+  
+}
+</script>
 </body>
 </html>
