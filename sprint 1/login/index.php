@@ -187,7 +187,7 @@ if(isset($_POST["subm"])){
 </style>
 </head>
 <body>
-
+<div class="bg"></div>
 <div class="right">
   <form action="" method="post" id="loginForm">
   <h2>Connecter</h2>
@@ -220,7 +220,7 @@ if(isset($_POST["subm"])){
   <button type="button" onclick="verifyAndSubmit()">Se connecter</button>
 
   <div class="signup-text">
-    Pas encore de compte ? <a href="#">Inscrivez-vous</a>
+    Pas encore de compte ? <a href="../register/">Inscrivez-vous</a>
   </div>
   <?php
   echo $err;

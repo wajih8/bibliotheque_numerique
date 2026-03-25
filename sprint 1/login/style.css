@@ -107,7 +107,16 @@ button:active {
   
   flex: 1; 
 }
-
+.bg {
+  position: fixed;
+  
+  
+  width: 101%;
+  height: 101%;
+  background: url("lib.jpeg") no-repeat center center/cover;
+  filter: blur(03px) brightness(1); /* blur + dark overlay */
+  z-index: -1;
+}
 
 /* bech yodhher ligne ta7t email w mdp mch bloc keml*/
 .input-group input {
