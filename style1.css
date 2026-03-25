@@ -1,0 +1,337 @@
+
+/* ─── VARIABLES ─────────────────────────────────────────── */
+:root {
+  --gold-deep:    #7a5c1e;
+  --gold-mid:     #b8891a;
+  --gold-light:   #d4a843;
+  --gold-pale:    #e8c87a;
+  --gold-cream:   #f5e6c0;
+  --brown-dark:   #1a1008;
+  --brown-rich:   #2d1e0a;
+  --brown-mid:    #5a3e1b;
+  --text-primary: #f0ddb0;
+  --text-muted:   #c4a05a;
+  --text-dim:     #8a6a35;
+  --error-color:  #d97070;
+  --error-bg:     rgba(160, 50, 50, 0.12);
+  --error-border: rgba(200, 80, 80, 0.35);
+  --nav-h:        70px;
+  --ease:         0.3s cubic-bezier(.4, 0, .2, 1);
+}
+/* ─── RESET & BASE ──────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: var(--brown-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 4rem;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 60%, rgba(90,62,27,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(120,80,20,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+a { text-decoration: none; }
+ 
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--brown-rich); }
+::-webkit-scrollbar-thumb { background: var(--gold-mid); border-radius: 3px; }
+/* ═══════════════════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════════════════ */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: linear-gradient(180deg, rgba(26,16,8,0.98), rgba(26,16,8,0.93));
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(180,130,40,0.20);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  z-index: 1000;
+}
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
+}
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+header h1::before {
+  content: '⚜';
+  font-size: 1rem;
+  color: var(--gold-mid);
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; text-shadow: 0 0 10px var(--gold-light); }
+}
+
+header nav { display: flex; }
+ 
+header nav a {
+  padding: 0.4rem 1rem;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  transition: color var(--ease), border-color var(--ease);
+}
+ 
+header nav a:hover,
+header nav a.active {
+  color: var(--gold-pale);
+  border-bottom-color: var(--gold-mid);
+}
+/* ═══════════════════════════════════════════════════════════
+   TITRE H2
+═══════════════════════════════════════════════════════════ */
+h2 {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(var(--nav-h) + 3rem);
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  letter-spacing: 0.03em;
+  text-align: center;
+  animation: fade-up 0.8s ease both;
+}
+h2::before {
+  content: '— Retour des objets empruntés —';
+  display: block;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  color: var(--text-dim);
+  margin-bottom: 0.45rem;
+}
+h2::after {
+  content: '';
+  display: block;
+  width: 65px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
+  margin: 0.85rem auto 0;
+}
+ 
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* ═══════════════════════════════════════════════════════════
+   FORMULAIRE
+═══════════════════════════════════════════════════════════ */
+#formRetour {
+  position: relative;
+  z-index: 1;
+  margin-top: 2.5rem;
+  margin-bottom: 4rem;
+  width: 100%;
+  max-width: 540px;
+  padding: 2.8rem 3rem;
+  background: linear-gradient(150deg, rgba(48,32,10,0.92), rgba(22,14,5,0.97));
+  border: 1px solid rgba(180,130,40,0.20);
+  animation: fade-up 0.9s 0.1s ease both;
+}
+/* Ligne lumineuse en haut */
+#formRetour::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
+}
+ 
+/* Coins décoratifs */
+#formRetour::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(180,130,40,0.07);
+  pointer-events: none;
+}
+/* ─── Groupe de champ ─── */
+#formRetour div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1.5rem;
+}
+ 
+/* ─── Labels ─── */
+#formRetour label {
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+/* ─── Inputs & Select ─── */
+#formRetour input,
+#formRetour select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(20,12,4,0.75);
+  border: 1px solid rgba(180,130,40,0.22);
+  color: var(--text-primary);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  outline: none;
+  transition: border-color var(--ease), box-shadow var(--ease), background var(--ease);
+  appearance: none;
+  -webkit-appearance: none;
+}
+#formRetour input::placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+}
+ 
+/* Icône calendrier dorée */
+#formRetour input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.55) sepia(1) saturate(2.5) hue-rotate(5deg);
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity var(--ease);
+}
+ 
+#formRetour input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+#formRetour select option {
+  background: var(--brown-rich);
+  color: var(--text-primary);
+}
+ 
+/* Focus state */
+#formRetour input:focus,
+#formRetour select:focus {
+  border-color: var(--gold-mid);
+  background: rgba(45,30,10,0.72);
+  box-shadow: 0 0 0 3px rgba(180,130,40,0.13), 0 4px 18px rgba(0,0,0,0.35);
+}
+/* ─── Champ en erreur ─── */
+#formRetour input-error,
+#formRetour select.input-error {
+  border-color: var(--error-border);
+  background: var(--error-bg);
+  box-shadow: 0 0 0 3px rgba(180,60,60,0.10);
+}
+ 
+/* ─── Messages d'erreur ─── */
+.error {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--error-color);
+  letter-spacing: 0.04em;
+  min-height: 1rem;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity var(--ease), transform var(--ease);
+}
+.error:not(:empty) {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ─── Bouton submit ─── */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 0.95rem 2rem;
+  background: linear-gradient(135deg, rgba(180,130,40,0.88), rgba(120,90,30,0.93));
+  color: var(--gold-cream);
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 0.90rem;
+  letter-spacing: 0.15em;
+  border: 1px solid rgba(232,200,122,0.42);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--ease);
+  text-align: center;
+}
+/* Shimmer au hover */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,220,140,0.15), transparent);
+  transition: left 0.5s ease;
+}
+.btn:hover::before { left: 160%; }
+ 
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.45), 0 0 22px rgba(180,130,40,0.25);
+  border-color: rgba(232,200,122,0.72);
+}
+ 
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+}
+ 
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  #formRetour {
+    padding: 2rem 1.6rem;
+    margin: 2rem 1rem 3rem;
+  }
+ 
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 0.9rem 1.2rem;
+    gap: 0.5rem;
+  }
+ 
+  h2 { margin-top: 140px; }
+ 
+  header nav a { padding: 0.3rem 0.6rem; font-size: 0.75rem; }
+}
+.input-error {
+  border: 1px solid red !important;
+  background: rgba(255,0,0,0.1);
+}
+
+
+ 
+
+

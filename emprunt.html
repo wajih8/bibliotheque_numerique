@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>emprunt</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <header>
+        <h1>Bibliothèque Centrale</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="items.html">Livres</a>
+            <a href="admin.html">Utilisateurs</a>
+            <a href="emprunt.html" class="active">Emprunts</a>
+        </nav>
+    </header>
+    <h2>Formulaire d'Emprunt</h2>
+    <form id="formEmprunt" >
+        <br>
+        <div> 
+            <label for="user"> Utilisateur :</label>
+            <input type="text" id="user" name="user" placeholder="Nom de l'utilisateur" >
+            <small id="errorUser" class="error"></small>
+        </div>
+        <br>
+        <div>
+            <label for="item">Livre/Objet :</label>
+            <select id="item" name="item" required>
+                <option value="">Choisir un objet</option>
+                <optgroup label="📚 Livres">
+                    <option value="1984">1984</option>
+                    <option value="petit_prince">Le Petit Prince</option>
+                </optgroup>
+                <optgroup label="💻 Informatique">
+                    <option value="pc">Ordinateur portable</option>
+                    <option value="tablette">Tablette</option>
+                </optgroup>
+                <optgroup label="🎧 Multimédia">
+                     <option"casque">Casque audio</option>
+                     <option value="camera">Caméra</option>
+                </optgroup>
+                <optgroup label="🎮 Loisirs">
+                    <option value="ps5">Console PS5</option>
+                </optgroup>
+            </select>
+            <small id="errorItem" class="error"></small>
+        </div>
+        <br>
+    
+        <div>
+             <label for="dateE">Date d'emprunt :</label>
+             <input type="date" id="dateE" name="date_emprunt">
+             <small id="errorDateE" class="error"></small>
+        </div>
+        <br>
+        <div>
+            <label for="dateR">Date de retour prévue :</label>
+            <input type="date" id="dateR" name="date_retour">
+            <small id="errorDateR" class="error"></small>
+         </div>
+         <br>
+         <div>
+            <button type="submit" class="btn">Valider l'emprunt</button>
+        </div>
+        <br>
+
+</form>
+<script src="script.js"></script>
+<script src="notification.js"></script>
+
+
+            
+           
+    
+</body>
+</html>

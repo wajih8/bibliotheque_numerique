@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>retour</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <header>
+        <h1>Bibliothèque Centrale</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="items.html">Livres</a>
+            <a href="admin.html">Utilisateurs</a>
+            <a href="emprunt.html" class="active">Emprunts</a>
+        </nav>
+    </header>
+    <h2>Retourner un objet</h2>
+    <form id="formRetour">
+        <br>
+        <div>
+            <label for="idEmprunt">ID de l'emprunt :</label>
+            <input type="number" placeholder="ID emprunt" id="idEmprunt" name="idEmprunt">
+            <small id="errorId"class="error"></small>
+        </div>
+        <br>
+        <div>
+            <label for="dateRetour">Date de retour :</label>
+             <input type="date" id="dateRetour" name="dateRetour">
+             <small id="errorDate" class="error"></small>
+        </div>
+        <br>
+        <div>
+            <label for="etat">État de l'objet :</label>
+            <select id="etat" name="etat">
+                <option value="">Choisir</option>
+                <option value="bon">Bon état</option>
+                <option value="abime">Abîmé</option>
+                <option value="perdu">Perdu</option>
+            </select>
+            <small id="errorEtat" class="error"></small>
+        </div>
+        <br>
+    
+       <div>
+        <button type="submit" class="btn">Valider le retour</button>
+       </div>
+        
+    </form>
+    <script src="script1.js"></script>
+    <script src="notification.js"></script>
+    
+</body>
+</html>
