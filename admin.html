@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <header>
+        <h1>Bibliothèque Centrale</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="items.html">Livres</a>
+            <a href="admin.html">Utilisateurs</a>
+            <a href="emprunt.html" class="active">Emprunts</a>
+        </nav>
+    </header>
+    <br>
+    <h2>Gestion Admin</h2>
+
+    <div class="stats">
+        <div class="card red">Emprunts en cours: <span id="encours">0</span></div>
+        <div class="card orange">Retards: <span id="retards">0</span></div>
+        <div class="card green">Disponibles: <span id="dispo">0</span></div>
+    </div>
+    <script src="admin.js"></script>
+    <script src="notification.js"></script>
+</body>
+</html>
