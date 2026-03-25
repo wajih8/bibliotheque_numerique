@@ -1,3 +1,50 @@
+<?php
+try{
+session_start();
+}catch(Exception $e){}
+require_once("../connect.php");
+
+if(isset($_POST["subm"])){
+    $email=$_POST["email"];
+    $password=$_POST["password"];
+    $stmt = $conn->prepare("SELECT `id`, `Username`, `Password`, `id_role` FROM `users` WHERE Email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($user = $result->fetch_assoc()) {
+        
+        if ($password== $user['Password']) {
+            
+            // 3. Set Session variables [cite: 102]
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['role'] = $user['id_role'];
+            if(isset($_POST['remember'])){
+              
+              setcookie('user_id', $user['id'], time() + (86400 * 30), "/");
+              // In a real app, use a secure random token instead of the raw ID for the second cookie
+              setcookie('user_role', $user['id_role'], time() + (86400 * 30), "/");
+            }
+            
+            header("Location: m.php");
+            exit();
+        } else {
+            $err='<div class="error-box"><span class="error-icon">⚠️</span>Email not found or password wrong. Please try again.</div>';
+        }
+    } else {
+      $err='<div class="error-box"><span class="error-icon">⚠️</span>Email not found or password wrong. Please try again.</div>';
+    }
+    
+    $stmt->close();
+
+
+
+}else{
+  $err='';
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +57,36 @@
     height: 100%;
     font-family: 'Times New Roman', serif;
   }
+  .error-box {
+    /* Layout */
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin: 20px 0;
+    max-width: 100%;
+    
+    /* Colors & Border */
+    background-color:rgb(44, 36, 36); /* Very light red */
+    border: 1px solid #eb5757;  /* Professional Red */
+    border-left: 5px solid #eb5757; /* Thicker left accent */
+    border-radius: 4px;
+    
+    /* Text Styling */
+    color:rgb(238, 200, 204);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    
+    /* Shadow for depth */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
 
+  /* Optional: Error Icon using a simple Unicode character */
+  .error-icon {
+    margin-right: 12px;
+    font-size: 18px;
+    font-weight: bold;
+  }
   /* Full-page background image */
   body {
     background: url("lib.jpeg") no-repeat center center/cover;
@@ -43,7 +119,7 @@
   input[type="password"] {
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
+    margin-top: 10px;
     background: rgba(28, 28, 28, 0.8);
     border: 1px solid rgba(255,255,255,0.1);
     color: white;
@@ -111,13 +187,26 @@
 </style>
 </head>
 <body>
-<form action="login.php" method="post" id="loginForm"></form>
+
 <div class="right">
+  <form action="" method="post" id="loginForm">
   <h2>Connecter</h2>
   <p>Votre voyage dans le monde des livres commence ici !</p>
 
-  <input type="email" placeholder="E-mail"name="email">
-  <input type="password" placeholder="Mot de passe"name="password">
+  <div class="input-column">
+    <div class="input-group">
+      <input type="email" id="email" placeholder="E-mail" name="email">
+    </div>
+    <!-- ERROR MESSAGE SEPARATE -->
+    <span class="error" id="emailError"></span>
+  </div>
+  <div class="input-column">
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Mot de passe" name="password">
+    </div>
+    <!-- ERROR BELOW THE LINE -->
+    <span class="error" id="passwordError"></span>
+  </div>
 
   <div class="form-options">
     <div class="checkbox-group">
@@ -126,14 +215,19 @@
     </div>
     <a href="#" class="forgot-link">Mot de passe oublié ?</a>
   </div>
-  <input name="subm"hidden>
+  <input name="subm"type="hidden" value="1">
 
   <button type="button" onclick="verifyAndSubmit()">Se connecter</button>
 
   <div class="signup-text">
     Pas encore de compte ? <a href="#">Inscrivez-vous</a>
   </div>
+  <?php
+  echo $err;
+  ?>
+</form>
 </div>
+
 <script>
   function verifyAndSubmit() {
   const form = document.getElementById('loginForm');
@@ -142,5 +236,6 @@
   
 }
 </script>
+<script src="script.js"></script>
 </body>
 </html>

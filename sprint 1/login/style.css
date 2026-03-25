@@ -3,7 +3,6 @@ body {
   overflow: hidden; /* prevents scrollbars */
 }
 
-/* Optional: prevent child overflow from showing */
 .right {
   box-sizing: border-box; /* ensures padding/borders don't break size */
 }
@@ -85,4 +84,56 @@ button:active {
   input, button {
     font-size: 16px; /* better for touch */
   }
+}
+.input-column {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+/* Input typing line */
+.input-column input {
+  width: 50%;
+  padding: 2px 0;
+  border: none;
+  border-bottom: 1px solid gray; /* underline */
+  background: transparent;
+  color: white;
+  font-size: 5px;
+  outline: none;
+}
+.input-group {
+  position: relative;
+  
+  flex: 1; 
+}
+
+
+/* bech yodhher ligne ta7t email w mdp mch bloc keml*/
+.input-group input {
+  width: 100%;
+  padding: 1% 0;
+  border: none;
+  background: transparent;
+  color: gray;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-group::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 105%;
+  height: 1px;          /* épaisseur de la ligne */
+  background: transparent;     /* couleur de la ligne */
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  min-height: 3px; /* reserve space so input never moves */
+  display: block;
 }
