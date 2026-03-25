@@ -1,2 +1,2 @@
 <?php
-$con=mysqli_connect("localhost","root","","biblio");
+$conn=mysqli_connect("localhost","root","","biblio");
